@@ -1,65 +1,251 @@
-import Image from "next/image";
+'use client'
 
+import { useEffect, useState, useRef } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+
+// ── Canvas de partículas ──────────────────────────────────────────
+function Particles() {
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+
+  useEffect(() => {
+    const canvas = canvasRef.current!
+    const ctx = canvas.getContext('2d')!
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
+
+    const particles = Array.from({ length: 60 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 2 + 0.5,
+      dx: (Math.random() - 0.5) * 0.3,
+      dy: (Math.random() - 0.5) * 0.3,
+      opacity: Math.random() * 0.5 + 0.1,
+    }))
+
+    let raf: number
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      for (const p of particles) {
+        ctx.beginPath()
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
+        ctx.fillStyle = `rgba(180, 255, 200, ${p.opacity})`
+        ctx.fill()
+        p.x += p.dx
+        p.y += p.dy
+        if (p.x < 0 || p.x > canvas.width) p.dx *= -1
+        if (p.y < 0 || p.y > canvas.height) p.dy *= -1
+      }
+      raf = requestAnimationFrame(draw)
+    }
+    draw()
+
+    const onResize = () => {
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
+    }
+    window.addEventListener('resize', onResize)
+    return () => { cancelAnimationFrame(raf); window.removeEventListener('resize', onResize) }
+  }, [])
+
+  return <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none z-0" />
+}
+
+// ── Blobs orgánicos ───────────────────────────────────────────────
+function Blobs() {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+      <motion.div
+        animate={{ scale: [1, 1.15, 1], x: [0, 30, 0], y: [0, -20, 0] }}
+        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full"
+        style={{ background: 'radial-gradient(circle, rgba(0,100,70,0.5) 0%, transparent 70%)' }}
+      />
+      <motion.div
+        animate={{ scale: [1, 1.2, 1], x: [0, -40, 0], y: [0, 30, 0] }}
+        transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+        className="absolute top-1/3 -right-40 w-[600px] h-[600px] rounded-full"
+        style={{ background: 'radial-gradient(circle, rgba(0,80,55,0.6) 0%, transparent 70%)' }}
+      />
+      <motion.div
+        animate={{ scale: [1, 1.1, 1], x: [0, 20, 0], y: [0, -30, 0] }}
+        transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut', delay: 4 }}
+        className="absolute -bottom-40 left-1/4 w-[700px] h-[700px] rounded-full"
+        style={{ background: 'radial-gradient(circle, rgba(0,120,80,0.35) 0%, transparent 70%)' }}
+      />
+      <motion.div
+        animate={{ scale: [1, 1.25, 1], x: [0, -20, 0], y: [0, 20, 0] }}
+        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 6 }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full"
+        style={{ background: 'radial-gradient(circle, rgba(10,60,45,0.4) 0%, transparent 70%)' }}
+      />
+    </div>
+  )
+}
+
+// ── Countdown ─────────────────────────────────────────────────────
+function CountdownUnit({ value, label }: { value: number; label: string }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="flex flex-col items-center bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl px-6 py-5 min-w-[90px]"
+    >
+      <AnimatePresence mode="popLayout">
+        <motion.span
+          key={value}
+          initial={{ opacity: 0, y: -16 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 16 }}
+          transition={{ duration: 0.25 }}
+          className="text-5xl font-bold text-white tabular-nums"
+        >
+          {String(value).padStart(2, '0')}
+        </motion.span>
+      </AnimatePresence>
+      <span className="text-xs uppercase tracking-[0.2em] text-green-300/70 mt-2">{label}</span>
+    </motion.div>
+  )
+}
+
+function Countdown() {
+  const getTimeLeft = () => {
+    const target = new Date('2026-07-05T13:00:00')
+    const now = new Date()
+    const diff = target.getTime() - now.getTime()
+    if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 }
+    return {
+      days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+      minutes: Math.floor((diff / (1000 * 60)) % 60),
+      seconds: Math.floor((diff / 1000) % 60),
+    }
+  }
+
+  const [timeLeft, setTimeLeft] = useState(getTimeLeft)
+
+  useEffect(() => {
+    const interval = setInterval(() => setTimeLeft(getTimeLeft()), 1000)
+    return () => clearInterval(interval)
+  }, [])
+
+  return (
+    <div className="flex gap-4 justify-center flex-wrap">
+      <CountdownUnit value={timeLeft.days} label="days" />
+      <CountdownUnit value={timeLeft.hours} label="hours" />
+      <CountdownUnit value={timeLeft.minutes} label="minutes" />
+      <CountdownUnit value={timeLeft.seconds} label="seconds" />
+    </div>
+  )
+}
+
+// ── URLs ──────────────────────────────────────────────────────────
+const MAPS_URL = "https://www.google.com/maps/place/Parques+del+R%C3%ADo/@6.2436857,-75.578435,3a,86.9y,223.35h,87.32t/data=!3m8!1e1!3m6!1sCIHM0ogKEICAgICiwMLltQE!2e10!3e11!6shttps:%2F%2Flh3.googleusercontent.com%2Fgpms-cs-s%2FABJJf52xI7A2-PzaHKUb4Ubemucyn65ekHcCm6ILEXaq5Tqy8aYUjvrytUH8WgX94gJMhrF1Ubj0DNeYWrRVUW5kbJF0IVSSyLJEBxCekNOHI-XIWsL9tDJQKqjwz9TkjjF0M9GJBzbP%3Dw900-h600-k-no-pi2.684572730629327-ya145.35475466911586-ro0-fo100!7i11264!8i5632!4m6!3m5!1s0x8e4429ac150efd3b:0xe07ee393112a7a77!8m2!3d6.2435957!4d-75.5795253!16s%2Fg%2F11bv18m15l?entry=ttu&g_ep=EgoyMDI2MDYwMy4xIKXMDSoASAFQAw%3D%3D"
+const CALENDAR_URL = "https://www.google.com/calendar/render?action=TEMPLATE&text=Belaisa%27s+Birthday&dates=20260705T130000/20260705T190000&details=Celebracion+de+los+25+anos+de+Belaisa&location=Parques+del+Rio%2C+Medellin&sf=true&output=xml"
+
+// ── Page ──────────────────────────────────────────────────────────
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <main className="relative min-h-screen flex flex-col items-center justify-center px-6 py-16 overflow-hidden"
+      style={{ backgroundColor: '#002a22' }}>
+
+      <Blobs />
+      <Particles />
+
+      {/* Header */}
+      <motion.div
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9 }}
+        className="text-center mb-14 relative z-10"
+      >
+        <p className="text-green-400/70 tracking-[0.4em] uppercase text-xs mb-6 font-light">
+          You are invited to celebrate
+        </p>
+
+        {/* Foto con gorrito */}
+        <motion.div
+          animate={{ y: [0, -10, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+          className="flex justify-center mb-4"
+        >
+          <img
+            src="/images/belaisa-photo.png"
+            alt="Belaisa"
+            className="w-94 h-94 object-contain drop-shadow-2xl"
+          />
+        </motion.div>
+
+        {/* Nombre como imagen */}
+        <img
+          src="/images/belaisa-name.png"
+          alt="Belaisa"
+          className="w-96 md:w-[600px] object-contain mx-auto mb-4 -mt-44"
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+
+        <div className="flex items-center justify-center gap-4">
+          <div className="h-px w-12 bg-green-400/30" />
+          <p className="text-sm tracking-[0.3em] uppercase text-green-300/60">25 Years</p>
+          <div className="h-px w-12 bg-green-400/30" />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
+      </motion.div>
+
+      {/* Countdown */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.4, duration: 0.8 }}
+        className="mb-14 text-center relative z-10"
+      >
+        <p className="text-green-400/50 text-xs uppercase tracking-[0.3em] mb-8">
+          Counting down to the celebration
+        </p>
+        <Countdown />
+      </motion.div>
+
+      {/* Date */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.6, duration: 0.8 }}
+        className="text-center mb-14 relative z-10"
+      >
+        <p className="text-white/80 text-3xl font-light tracking-wide">July 5, 2026</p>
+        <p className="text-green-400/60 text-base tracking-widest mt-1">1:00 PM — 7:00 PM</p>
+      </motion.div>
+
+      {/* Message */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.8, duration: 0.8 }}
+        className="max-w-sm text-center mb-14 relative z-10"
+      >
+        <p className="text-green-200/30 text-sm leading-relaxed italic font-light">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+      </motion.div>
+
+      {/* Location */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1, duration: 0.8 }}
+        className="text-center relative z-10"
+      >
+        <p className="text-green-400/50 text-xs uppercase tracking-[0.3em] mb-2">Location</p>
+        <p className="text-white/80 text-xl font-light mb-6">Parques del Rio, Medellin</p>
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <a href={MAPS_URL} target="_blank" rel="noopener noreferrer"
+            className="inline-flex items-center justify-center border border-green-400/30 text-green-300/70 px-7 py-3 rounded-full text-sm hover:bg-green-400/10 hover:border-green-400/50 transition-all duration-300">
+            Ver en Google Maps
           </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
+          <a href={CALENDAR_URL} target="_blank" rel="noopener noreferrer"
+            className="inline-flex items-center justify-center bg-green-400/10 border border-green-400/30 text-green-300/70 px-7 py-3 rounded-full text-sm hover:bg-green-400/20 hover:border-green-400/50 transition-all duration-300">
+            Agregar al calendario
           </a>
         </div>
-      </main>
-    </div>
-  );
+      </motion.div>
+
+    </main>
+  )
 }
