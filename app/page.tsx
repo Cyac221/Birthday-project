@@ -51,6 +51,56 @@ function Particles() {
 }
 
 // ── Blobs orgánicos ───────────────────────────────────────────────
+const photos = [
+  '/images/belaisa-photo-back1.png',
+  '/images/belaisa-photo-back2.png',
+  '/images/belaisa-photo-back3.png',
+  '/images/belaisa-photo-back4.png',
+  '/images/belaisa-photo-back5.png',
+  '/images/belaisa-photo-back6.png',
+  
+]
+
+function FloatingPhotos() {
+  const positions = [
+    { top: '3%',  left: '2%',   size: 110, delay: 0,   duration: 8  },
+    { top: '8%',  left: '55%',  size: 95,  delay: 2,   duration: 10 },
+    { top: '8%',  left: '88%',  size: 120, delay: 1,   duration: 7  },
+    { top: '30%', left: '1%',   size: 100, delay: 3,   duration: 9  },
+    { top: '35%', left: '70%',  size: 105, delay: 1.5, duration: 11 },
+    { top: '55%', left: '40%',  size: 90,  delay: 4,   duration: 8  },
+    { top: '60%', left: '85%',  size: 115, delay: 0.5, duration: 9  },
+    { top: '70%', left: '5%',   size: 100, delay: 2.5, duration: 7  },
+    { top: '75%', left: '60%',  size: 95,  delay: 3.5, duration: 10 },
+    { top: '88%', left: '25%',  size: 110, delay: 1,   duration: 8  },
+    { top: '88%', left: '80%',  size: 105, delay: 2,   duration: 9  },
+    { top: '45%', left: '20%',  size: 90,  delay: 0,   duration: 11 },
+  ]
+
+
+  return (
+    <>
+      {positions.map((pos, i) => (
+        <motion.div
+          key={i}
+          className="absolute pointer-events-none z-0"
+          style={{ top: pos.top, left: pos.left }}
+          animate={{ y: [0, -15, 0], rotate: [-3, 3, -3] }}
+          transition={{ duration: pos.duration, repeat: Infinity, ease: 'easeInOut', delay: pos.delay }}
+        >
+          <img
+            src={photos[i % photos.length]}
+            alt=""
+            style={{ width: pos.size, height: pos.size, opacity: 0.13 }}
+            className="object-contain rounded-xl"
+          />
+        </motion.div>
+      ))}
+    </>
+  )
+}
+
+
 function Blobs() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
@@ -83,6 +133,37 @@ function Blobs() {
 }
 
 // ── Countdown ─────────────────────────────────────────────────────
+  function GlitchNumber() {
+    const [display, setDisplay] = useState('25')
+    const chars = '0123456789!@#$%&?'
+    const target = '25'
+
+    useEffect(() => {
+      let iterations = 0
+      const totalFrames = 30
+      const interval = setInterval(() => {
+        setDisplay(
+          target.split('').map((char, i) => {
+            if (iterations > totalFrames - (i * 4)) return char
+            return chars[Math.floor(Math.random() * chars.length)]
+          }).join('')
+        )
+        iterations++
+        if (iterations > totalFrames + 4) {
+          clearInterval(interval)
+          setDisplay(target)
+        }
+      }, 60)
+      return () => clearInterval(interval)
+    }, [])
+
+    return (
+      <span className="font-serif text-white" style={{ fontSize: '7rem', fontWeight: 300 }}>
+        {display}
+      </span>
+    )
+  }
+
 function CountdownUnit({ value, label }: { value: number; label: string }) {
   return (
     <motion.div
@@ -145,11 +226,19 @@ const CALENDAR_URL = "https://www.google.com/calendar/render?action=TEMPLATE&tex
 // ── Page ──────────────────────────────────────────────────────────
 export default function Home() {
   return (
-    <main className="relative min-h-screen flex flex-col items-center justify-center px-6 py-16 overflow-hidden"
-      style={{ backgroundColor: '#002a22' }}>
+<motion.main
+  className="relative min-h-screen flex flex-col items-center justify-center px-6 py-16 overflow-hidden"
+  animate={{ background: [
+    'linear-gradient(135deg, #001a14 0%, #002a22 40%, #004a3f 70%, #003830 100%)',
+    'linear-gradient(135deg, #002a22 0%, #004a3f 40%, #003328 70%, #001a14 100%)',
+    'linear-gradient(135deg, #001a14 0%, #002a22 40%, #004a3f 70%, #003830 100%)',
+  ]}}
+  transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+>
 
       <Blobs />
       <Particles />
+      <FloatingPhotos />
 
       {/* Header */}
       <motion.div
@@ -183,9 +272,10 @@ export default function Home() {
         />
 
         <div className="flex items-center justify-center gap-4">
-          <div className="h-px w-12 bg-green-400/30" />
-          <p className="text-sm tracking-[0.3em] uppercase text-green-300/60">25 Years</p>
-          <div className="h-px w-12 bg-green-400/30" />
+          <div className="flex items-center gap-3 justify-center -mt-20">
+          <GlitchNumber />
+          <p className="text-sm tracking-[0.3em] uppercase text-green-300/60 self-end mb-3"></p>
+        </div>
         </div>
       </motion.div>
 
@@ -246,6 +336,6 @@ export default function Home() {
         </div>
       </motion.div>
 
-    </main>
+    </motion.main>
   )
 }
