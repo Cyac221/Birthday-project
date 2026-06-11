@@ -222,8 +222,7 @@ function Countdown() {
 
 // ── URLs ──────────────────────────────────────────────────────────
 const MAPS_URL = "https://www.google.com/maps/place/Parques+del+R%C3%ADo/@6.2436857,-75.578435,3a,86.9y,223.35h,87.32t/data=!3m8!1e1!3m6!1sCIHM0ogKEICAgICiwMLltQE!2e10!3e11!6shttps:%2F%2Flh3.googleusercontent.com%2Fgpms-cs-s%2FABJJf52xI7A2-PzaHKUb4Ubemucyn65ekHcCm6ILEXaq5Tqy8aYUjvrytUH8WgX94gJMhrF1Ubj0DNeYWrRVUW5kbJF0IVSSyLJEBxCekNOHI-XIWsL9tDJQKqjwz9TkjjF0M9GJBzbP%3Dw900-h600-k-no-pi2.684572730629327-ya145.35475466911586-ro0-fo100!7i11264!8i5632!4m6!3m5!1s0x8e4429ac150efd3b:0xe07ee393112a7a77!8m2!3d6.2435957!4d-75.5795253!16s%2Fg%2F11bv18m15l?entry=ttu&g_ep=EgoyMDI2MDYwMy4xIKXMDSoASAFQAw%3D%3D"
-const CALENDAR_URL = "https://www.google.com/calendar/render?action=TEMPLATE&text=Belaisa%27s+Birthday&dates=20260705T130000/20260705T190000&details=Celebracion+de+los+25+anos+de+Belaisa&location=Parques+del+Rio%2C+Medellin&sf=true&output=xml"
-
+const CALENDAR_URL = "https://www.google.com/calendar/render?action=TEMPLATE&text=Bela%27s+Birthday+%F0%9F%8E%89%F0%9F%8E%8A&dates=20260705T130000/20260705T190000&details=Celebracion+de+los+25+anos+de+Belaisa&location=Parques+del+Rio%2C+Medellin&sf=true&output=xml"
 // ── Page ──────────────────────────────────────────────────────────
 export default function Home() {
   return (
