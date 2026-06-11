@@ -327,11 +327,29 @@ export default function Home() {
             Ver en Google Maps
           </a>
           <a href={CALENDAR_URL} target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center justify-center bg-green-400/10 border border-green-400/30 text-green-300/70 px-7 py-3 rounded-full text-sm hover:bg-green-400/20 hover:border-green-400/50 transition-all duration-300">
-            Agregar al calendario
-          </a>
-        </div>
-      </motion.div>
+                      className="inline-flex items-center justify-center bg-green-400/10 border border-green-400/30 text-green-300/70 px-7 py-3 rounded-full text-sm hover:bg-green-400/20 hover:border-green-400/50 transition-all duration-300">
+                      Agregar al calendario
+                    </a>
+                  </div>
+                  <p className="text-green-200/60 text-sm leading-relaxed italic font-light max-w-sm mx-auto mt-8 text-center">
+                    Cada seis de julio marca un capítulo lleno de aprendizajes, sueños cumplidos y nuevos caminos por recorrer. Pero sé que no lo hago sola: cada abrazo, palabra y compañía vienen de personas que hacen este camino más liviano y significativo.
+                    <br /><br />
+                    Soy quien soy gracias a ti, y es por eso que mi luz también te pertenece.
+                  </p>
+                </motion.div>
+
+    <motion.div
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 1.2, duration: 0.8 }}
+  className="relative z-10 mt-8"
+>
+  <img
+    src="/images/belaisa-footer.png"
+    alt="Belaisa"
+    className="w-64 object-contain mx-auto"
+  />
+</motion.div>
 
     </motion.main>
   )
