@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Bela's Birthday 🎉",
-  description: "Invitación VIP a los 25 años de Belaisa",
+  description: "Invitación VIP a los 25 años de Bela",
   icons: {
     icon: '/favicon.ico',
   },
