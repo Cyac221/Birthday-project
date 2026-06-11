@@ -62,6 +62,10 @@ const photos = [
   '/images/belaisa-photo-back8.png',
   '/images/belaisa-photo-back9.png',
   '/images/belaisa-photo-back10.png',
+  '/images/belaisa-photo-back11.png',
+  '/images/belaisa-photo-back12.png',
+  '/images/belaisa-photo-back13.png',
+  '/images/belaisa-photo-back14.png',
   
 ]
 
@@ -77,6 +81,10 @@ function FloatingPhotos() {
     { top: '58%',  left: '86%',  size: 150, delay: 3.5, duration: 10 },
     { top: '78%',  left: '-4%',  size: 155, delay: 1,   duration: 8  },
     { top: '78%',  left: '85%',  size: 155, delay: 2,   duration: 9  },
+    { top: '48%',  left: '-4%',  size: 155, delay: 5,   duration: 10 },
+    { top: '48%',  left: '85%',  size: 155, delay: 3,   duration: 8  },
+    { top: '68%',  left: '-4%',  size: 155, delay: 2,   duration: 9  },
+    { top: '68%',  left: '85%',  size: 155, delay: 4,   duration: 7  },
   ]
 
   return (
