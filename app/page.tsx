@@ -82,7 +82,7 @@ function FloatingPhotos() {
     { top: '61%',  left: '-7%',  size: 150, delay: 1,   duration: 8  },
     { top: '67%',  left: '83%',  size: 170, delay: 2,   duration: 9  },
     { top: '75%',  left: '-4%',  size: 165, delay: 0,   duration: 10 },
-    { top: '80%',  left: '87%',  size: 145, delay: 3,   duration: 7  },
+    { top: '80%',  left: '47%',  size: 145, delay: 3,   duration: 7  },
     { top: '89%',  left: '-2%',  size: 155, delay: 1.5, duration: 9  },
     { top: '93%',  left: '70%',  size: 160, delay: 2.5, duration: 8  },
   ]
