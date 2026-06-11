@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "Bela's Birthday 🎉",
   description: "Invitación VIP a los 25 años de Belaisa",
   icons: {
-    icon: '/favicon.ico',
+    icon: 'app/api/favicon.ico',
   },
 };
 
