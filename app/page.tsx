@@ -133,34 +133,26 @@ function Blobs() {
 }
 
 // ── Countdown ─────────────────────────────────────────────────────
-  function GlitchNumber() {
-    const [display, setDisplay] = useState('25')
-    const chars = '0123456789!@#$%&?'
-    const target = '25'
+  function AnimatedNumber() {
+    const [count, setCount] = useState(0)
 
     useEffect(() => {
-      let iterations = 0
-      const totalFrames = 30
+      let current = 0
       const interval = setInterval(() => {
-        setDisplay(
-          target.split('').map((char, i) => {
-            if (iterations > totalFrames - (i * 4)) return char
-            return chars[Math.floor(Math.random() * chars.length)]
-          }).join('')
-        )
-        iterations++
-        if (iterations > totalFrames + 4) {
-          clearInterval(interval)
-          setDisplay(target)
-        }
-      }, 60)
+        current++
+        setCount(current)
+        if (current >= 25) clearInterval(interval)
+      }, 80)
       return () => clearInterval(interval)
     }, [])
 
     return (
-      <span className="font-serif text-white" style={{ fontSize: '7rem', fontWeight: 300 }}>
-        {display}
-      </span>
+      <div className="flex flex-col items-center">
+        <span className="font-serif text-white" style={{ fontSize: '8rem', fontWeight: 300 }}>
+          {count}
+        </span>
+        <span className="text-2xl tracking-[0.3em] uppercase text-white">Julios</span>
+      </div>
     )
   }
 
@@ -210,11 +202,11 @@ function Countdown() {
   }, [])
 
   return (
-    <div className="flex gap-4 justify-center flex-wrap">
-      <CountdownUnit value={timeLeft.days} label="days" />
-      <CountdownUnit value={timeLeft.hours} label="hours" />
-      <CountdownUnit value={timeLeft.minutes} label="minutes" />
-      <CountdownUnit value={timeLeft.seconds} label="seconds" />
+    <div className="grid grid-cols-4 gap-2 justify-center">
+      <CountdownUnit value={timeLeft.days} label="Días" />
+      <CountdownUnit value={timeLeft.hours} label="Horas" />
+      <CountdownUnit value={timeLeft.minutes} label="Minutos" />
+      <CountdownUnit value={timeLeft.seconds} label="Segundos" />
     </div>
   )
 }
@@ -247,9 +239,6 @@ export default function Home() {
         transition={{ duration: 0.9 }}
         className="text-center mb-14 relative z-10"
       >
-        <p className="text-green-400/70 tracking-[0.4em] uppercase text-xs mb-6 font-light">
-          You are invited to celebrate
-        </p>
 
         {/* Foto con gorrito */}
         <motion.div
@@ -273,7 +262,7 @@ export default function Home() {
 
         <div className="flex items-center justify-center gap-4">
           <div className="flex items-center gap-3 justify-center -mt-20">
-          <GlitchNumber />
+          <AnimatedNumber />
           <p className="text-sm tracking-[0.3em] uppercase text-green-300/60 self-end mb-3"></p>
         </div>
         </div>
@@ -287,7 +276,7 @@ export default function Home() {
         className="mb-14 text-center relative z-10"
       >
         <p className="text-green-400/50 text-xs uppercase tracking-[0.3em] mb-8">
-          Counting down to the celebration
+          Faltan
         </p>
         <Countdown />
       </motion.div>
@@ -299,8 +288,8 @@ export default function Home() {
         transition={{ delay: 0.6, duration: 0.8 }}
         className="text-center mb-14 relative z-10"
       >
-        <p className="text-white/80 text-3xl font-light tracking-wide">July 5, 2026</p>
-        <p className="text-green-400/60 text-base tracking-widest mt-1">1:00 PM — 7:00 PM</p>
+        <p className="text-white/80 text-3xl font-light tracking-wide">Domingo 5 de julio</p>
+        <p className="text-green-400/60 text-base tracking-widest mt-1">1:00 PM</p>
       </motion.div>
 
       {/* Message */}
@@ -311,7 +300,7 @@ export default function Home() {
         className="max-w-sm text-center mb-14 relative z-10"
       >
         <p className="text-green-200/30 text-sm leading-relaxed italic font-light">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Una tarde bonita, risas, recuerdos, algo delicioso para compartir y el placer de disfrutar tu compañía.
         </p>
       </motion.div>
 
@@ -322,7 +311,7 @@ export default function Home() {
         transition={{ delay: 1, duration: 0.8 }}
         className="text-center relative z-10"
       >
-        <p className="text-green-400/50 text-xs uppercase tracking-[0.3em] mb-2">Location</p>
+        <p className="text-green-400/50 text-xs uppercase tracking-[0.3em] mb-2">Lugar</p>
         <p className="text-white/80 text-xl font-light mb-6">Parques del Rio, Medellin</p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <a href={MAPS_URL} target="_blank" rel="noopener noreferrer"
