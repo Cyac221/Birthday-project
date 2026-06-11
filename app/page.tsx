@@ -147,11 +147,11 @@ function Blobs() {
     }, [])
 
     return (
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center gap-0">
         <span className="font-serif text-white" style={{ fontSize: '8rem', fontWeight: 300 }}>
           {count}
         </span>
-        <span className="text-2xl tracking-[0.3em] uppercase text-white">Julios</span>
+        <span className="text-2xl tracking-[0.3em] uppercase text-white -mt-4">Julios</span>
       </div>
     )
   }
@@ -237,19 +237,19 @@ export default function Home() {
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9 }}
-        className="text-center mb-14 relative z-10"
+        className="text-center mb-6 relative z-10"
       >
 
         {/* Foto con gorrito */}
         <motion.div
           animate={{ y: [0, -10, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-          className="flex justify-center mb-4"
+          className="flex justify-center -mb-20"
         >
           <img
             src="/images/belaisa-photo.png"
             alt="Belaisa"
-            className="w-94 h-94 object-contain drop-shadow-2xl"
+            className="w-96 h-96 object-contain drop-shadow-2xl"
           />
         </motion.div>
 
@@ -257,7 +257,7 @@ export default function Home() {
         <img
           src="/images/belaisa-name.png"
           alt="Belaisa"
-          className="w-96 md:w-[600px] object-contain mx-auto mb-4 -mt-44"
+          className="w-96 md:w-[600px] object-contain mx-auto mb-16"
         />
 
         <div className="flex items-center justify-center gap-4">
@@ -279,14 +279,14 @@ export default function Home() {
           ¿Qué tal si celebramos juntos mi primer cuarto de siglo?
         </p>
         <p className="text-white/90 text-2xl font-light tracking-wide">Domingo 5 de Julio</p>
-        <p className="text-green-400/60 text-base tracking-widest mt-1">1:00 PM — 7:00 PM</p>
+        <p className="text-green-400/60 text-base tracking-widest mt-1">1:00 PM</p>
       </motion.div>
 
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6, duration: 0.8 }}
-        className="mb-14 text-center relative z-10"
+        className="text-center mb-2 relative z-10"
       >
         <p className="text-green-400/50 text-xs uppercase tracking-[0.3em] mb-8">
           Faltan
@@ -299,7 +299,7 @@ export default function Home() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6, duration: 0.8 }}
-        className="text-center mb-14 relative z-10"
+        className="text-center mb-6 relative z-10"
       >
       </motion.div>
 
@@ -308,7 +308,7 @@ export default function Home() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8, duration: 0.8 }}
-        className="max-w-sm text-center mb-14 relative z-10"
+        className="max-w-sm text-center mb-6 relative z-10"
       >
       </motion.div>
 
@@ -317,7 +317,7 @@ export default function Home() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1, duration: 0.8 }}
-        className="text-center relative z-10"
+        className="text-center mb-2 relative z-10"
       >
         <p className="text-green-400/50 text-xs uppercase tracking-[0.3em] mb-2">Lugar</p>
         <p className="text-white/80 text-xl font-light mb-6">Parques del Rio, Medellin</p>
