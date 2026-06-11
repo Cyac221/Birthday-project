@@ -67,16 +67,16 @@ const photos = [
 
 function FloatingPhotos() {
   const positions = [
-    { top: '2%',   left: '1%',   size: 200, delay: 0,   duration: 8  },
-    { top: '3%',   left: '82%',  size: 210, delay: 1,   duration: 7  },
-    { top: '38%',  left: '2%',   size: 190, delay: 4,   duration: 8  },
-    { top: '42%',  left: '75%',  size: 205, delay: 0.5, duration: 9  },
-    { top: '78%',  left: '2%',   size: 210, delay: 1,   duration: 8  },
-    { top: '78%',  left: '75%',  size: 200, delay: 2,   duration: 10 },
-    { top: '18%',  left: '15%',  size: 195, delay: 3,   duration: 9  },
-    { top: '22%',  left: '68%',  size: 160, delay: 1.5, duration: 11 },
-    { top: '58%',  left: '30%',  size: 195, delay: 2.5, duration: 7  },
-    { top: '62%',  left: '78%',  size: 160, delay: 3.5, duration: 10 },
+    { top: '2%',   left: '-3%',  size: 160, delay: 0,   duration: 8  },
+    { top: '2%',   left: '85%',  size: 160, delay: 1,   duration: 7  },
+    { top: '18%',  left: '-4%',  size: 150, delay: 3,   duration: 9  },
+    { top: '18%',  left: '86%',  size: 150, delay: 1.5, duration: 11 },
+    { top: '38%',  left: '-4%',  size: 155, delay: 4,   duration: 8  },
+    { top: '38%',  left: '85%',  size: 155, delay: 0.5, duration: 9  },
+    { top: '58%',  left: '-3%',  size: 150, delay: 2.5, duration: 7  },
+    { top: '58%',  left: '86%',  size: 150, delay: 3.5, duration: 10 },
+    { top: '78%',  left: '-4%',  size: 155, delay: 1,   duration: 8  },
+    { top: '78%',  left: '85%',  size: 155, delay: 2,   duration: 9  },
   ]
 
   return (
