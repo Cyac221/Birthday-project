@@ -58,25 +58,26 @@ const photos = [
   '/images/belaisa-photo-back4.png',
   '/images/belaisa-photo-back5.png',
   '/images/belaisa-photo-back6.png',
+  '/images/belaisa-photo-back7.png',
+  '/images/belaisa-photo-back8.png',
+  '/images/belaisa-photo-back9.png',
+  '/images/belaisa-photo-back10.png',
   
 ]
 
 function FloatingPhotos() {
-  const positions = [
-    { top: '3%',  left: '2%',   size: 110, delay: 0,   duration: 8  },
-    { top: '8%',  left: '55%',  size: 95,  delay: 2,   duration: 10 },
-    { top: '8%',  left: '88%',  size: 120, delay: 1,   duration: 7  },
-    { top: '30%', left: '1%',   size: 100, delay: 3,   duration: 9  },
-    { top: '35%', left: '70%',  size: 105, delay: 1.5, duration: 11 },
-    { top: '55%', left: '40%',  size: 90,  delay: 4,   duration: 8  },
-    { top: '60%', left: '85%',  size: 115, delay: 0.5, duration: 9  },
-    { top: '70%', left: '5%',   size: 100, delay: 2.5, duration: 7  },
-    { top: '75%', left: '60%',  size: 95,  delay: 3.5, duration: 10 },
-    { top: '88%', left: '25%',  size: 110, delay: 1,   duration: 8  },
-    { top: '88%', left: '80%',  size: 105, delay: 2,   duration: 9  },
-    { top: '45%', left: '20%',  size: 90,  delay: 0,   duration: 11 },
-  ]
-
+const positions = [
+  { top: '2%',   left: '1%',   size: 200, delay: 0,   duration: 8  },
+  { top: '5%',   left: '45%',  size: 190, delay: 2,   duration: 10 },
+  { top: '3%',   left: '82%',  size: 210, delay: 1,   duration: 7  },
+  { top: '18%',  left: '15%',  size: 195, delay: 3,   duration: 9  },
+  { top: '22%',  left: '68%',  size: 200, delay: 1.5, duration: 11 },
+  { top: '38%',  left: '2%',   size: 190, delay: 4,   duration: 8  },
+  { top: '42%',  left: '55%',  size: 205, delay: 0.5, duration: 9  },
+  { top: '58%',  left: '30%',  size: 195, delay: 2.5, duration: 7  },
+  { top: '62%',  left: '78%',  size: 200, delay: 3.5, duration: 10 },
+  { top: '78%',  left: '8%',   size: 210, delay: 1,   duration: 8  },
+]
 
   return (
     <>
@@ -91,7 +92,7 @@ function FloatingPhotos() {
           <img
             src={photos[i % photos.length]}
             alt=""
-            style={{ width: pos.size, height: pos.size, opacity: 0.13 }}
+            style={{ width: pos.size, height: pos.size, opacity: 0.32}}
             className="object-contain rounded-xl"
           />
         </motion.div>
@@ -275,7 +276,7 @@ export default function Home() {
         transition={{ delay: 0.4, duration: 0.8 }}
         className="text-center mb-6 relative z-10"
       >
-        <p className="text-white/80 text-xl font-light italic mb-4">
+        <p className="text-white/80 text-xl font-light mb-4">
           ¿Qué tal si celebramos juntos mi primer cuarto de siglo?
         </p>
         <p className="text-white/90 text-2xl font-light tracking-wide">Domingo 5 de Julio</p>
