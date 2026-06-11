@@ -70,22 +70,22 @@ const photos = [
 ]
 
 function FloatingPhotos() {
-  const positions = [
-    { top: '2%',   left: '-3%',  size: 160, delay: 0,   duration: 8  },
-    { top: '2%',   left: '85%',  size: 160, delay: 1,   duration: 7  },
-    { top: '18%',  left: '-4%',  size: 150, delay: 3,   duration: 9  },
-    { top: '18%',  left: '86%',  size: 150, delay: 1.5, duration: 11 },
-    { top: '38%',  left: '-4%',  size: 155, delay: 4,   duration: 8  },
-    { top: '38%',  left: '85%',  size: 155, delay: 0.5, duration: 9  },
-    { top: '58%',  left: '-3%',  size: 150, delay: 2.5, duration: 7  },
-    { top: '58%',  left: '86%',  size: 150, delay: 3.5, duration: 10 },
-    { top: '78%',  left: '-4%',  size: 155, delay: 1,   duration: 8  },
-    { top: '78%',  left: '85%',  size: 155, delay: 2,   duration: 9  },
-    { top: '48%',  left: '-4%',  size: 155, delay: 5,   duration: 10 },
-    { top: '48%',  left: '85%',  size: 155, delay: 3,   duration: 8  },
-    { top: '68%',  left: '-4%',  size: 155, delay: 2,   duration: 9  },
-    { top: '68%',  left: '85%',  size: 155, delay: 4,   duration: 7  },
-  ]
+const positions = [
+  { top: '2%',   left: '-3%',  size: 160, delay: 0,   duration: 8  },
+  { top: '1%',   left: '83%',  size: 145, delay: 1,   duration: 7  },
+  { top: '14%',  left: '-5%',  size: 155, delay: 3,   duration: 9  },
+  { top: '20%',  left: '88%',  size: 165, delay: 1.5, duration: 11 },
+  { top: '32%',  left: '-2%',  size: 150, delay: 4,   duration: 8  },
+  { top: '40%',  left: '84%',  size: 160, delay: 0.5, duration: 9  },
+  { top: '50%',  left: '-6%',  size: 155, delay: 2.5, duration: 7  },
+  { top: '55%',  left: '87%',  size: 145, delay: 3.5, duration: 10 },
+  { top: '65%',  left: '-3%',  size: 165, delay: 1,   duration: 8  },
+  { top: '70%',  left: '85%',  size: 150, delay: 2,   duration: 9  },
+  { top: '80%',  left: '-5%',  size: 155, delay: 0,   duration: 10 },
+  { top: '82%',  left: '86%',  size: 160, delay: 3,   duration: 7  },
+  { top: '92%',  left: '-2%',  size: 145, delay: 1.5, duration: 9  },
+  { top: '90%',  left: '84%',  size: 155, delay: 2.5, duration: 8  },
+]
 
   return (
     <>
