@@ -203,7 +203,7 @@ function Countdown() {
   }, [])
 
   return (
-    <div className="grid grid-cols-4 gap-2 justify-center">
+    <div className="grid grid-cols-4 gap-2 w-full max-w-md mx-auto">
       <CountdownUnit value={timeLeft.days} label="Días" />
       <CountdownUnit value={timeLeft.hours} label="Horas" />
       <CountdownUnit value={timeLeft.minutes} label="Minutos" />
@@ -279,7 +279,7 @@ export default function Home() {
         <p className="text-white/80 text-xl font-light mb-4">
           ¿Qué tal si celebramos juntos mi primer cuarto de siglo?
         </p>
-        <p className="text-white/90 text-2xl font-light tracking-wide">Domingo 5 de Julio</p>
+        <p className="text-white/90 text-2xl font-bold tracking-wide">Domingo 5 de Julio</p>
         <p className="text-green-400/60 text-base tracking-widest mt-1">1:00 PM</p>
       </motion.div>
 
@@ -321,7 +321,7 @@ export default function Home() {
         className="text-center mb-2 relative z-10"
       >
         <p className="text-green-400/50 text-xs uppercase tracking-[0.3em] mb-2">Lugar</p>
-        <p className="text-white/80 text-xl font-light mb-6">Parques del Rio, Medellin</p>
+        <p className="text-white/80 text-xl font-bold mb-6">Parques del Río, Medellín</p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <a href={MAPS_URL} target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center justify-center border border-green-400/30 text-green-300/70 px-7 py-3 rounded-full text-sm hover:bg-green-400/10 hover:border-green-400/50 transition-all duration-300">
