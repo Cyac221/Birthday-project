@@ -273,6 +273,19 @@ export default function Home() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.4, duration: 0.8 }}
+        className="text-center mb-6 relative z-10"
+      >
+        <p className="text-white/80 text-xl font-light italic mb-4">
+          ¿Qué tal si celebramos juntos mi primer cuarto de siglo?
+        </p>
+        <p className="text-white/90 text-2xl font-light tracking-wide">Domingo 5 de Julio</p>
+        <p className="text-green-400/60 text-base tracking-widest mt-1">1:00 PM — 7:00 PM</p>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.6, duration: 0.8 }}
         className="mb-14 text-center relative z-10"
       >
         <p className="text-green-400/50 text-xs uppercase tracking-[0.3em] mb-8">
@@ -288,8 +301,6 @@ export default function Home() {
         transition={{ delay: 0.6, duration: 0.8 }}
         className="text-center mb-14 relative z-10"
       >
-        <p className="text-white/80 text-3xl font-light tracking-wide">Domingo 5 de julio</p>
-        <p className="text-green-400/60 text-base tracking-widest mt-1">1:00 PM</p>
       </motion.div>
 
       {/* Message */}
@@ -299,9 +310,6 @@ export default function Home() {
         transition={{ delay: 0.8, duration: 0.8 }}
         className="max-w-sm text-center mb-14 relative z-10"
       >
-        <p className="text-green-200/30 text-sm leading-relaxed italic font-light">
-          Una tarde bonita, risas, recuerdos, algo delicioso para compartir y el placer de disfrutar tu compañía.
-        </p>
       </motion.div>
 
       {/* Location */}
