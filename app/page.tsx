@@ -70,22 +70,22 @@ const photos = [
 ]
 
 function FloatingPhotos() {
-const positions = [
-  { top: '2%',   left: '-3%',  size: 160, delay: 0,   duration: 8  },
-  { top: '1%',   left: '83%',  size: 145, delay: 1,   duration: 7  },
-  { top: '14%',  left: '-5%',  size: 155, delay: 3,   duration: 9  },
-  { top: '20%',  left: '88%',  size: 165, delay: 1.5, duration: 11 },
-  { top: '32%',  left: '-2%',  size: 150, delay: 4,   duration: 8  },
-  { top: '40%',  left: '84%',  size: 160, delay: 0.5, duration: 9  },
-  { top: '50%',  left: '-6%',  size: 155, delay: 2.5, duration: 7  },
-  { top: '55%',  left: '87%',  size: 145, delay: 3.5, duration: 10 },
-  { top: '65%',  left: '-3%',  size: 165, delay: 1,   duration: 8  },
-  { top: '70%',  left: '85%',  size: 150, delay: 2,   duration: 9  },
-  { top: '80%',  left: '-5%',  size: 155, delay: 0,   duration: 10 },
-  { top: '82%',  left: '86%',  size: 160, delay: 3,   duration: 7  },
-  { top: '92%',  left: '-2%',  size: 145, delay: 1.5, duration: 9  },
-  { top: '90%',  left: '84%',  size: 155, delay: 2.5, duration: 8  },
-]
+  const positions = [
+    { top: '1%',   left: '-5%',  size: 170, delay: 0,   duration: 8  },
+    { top: '3%',   left: '80%',  size: 140, delay: 1,   duration: 7  },
+    { top: '11%',  left: '-2%',  size: 145, delay: 3,   duration: 9  },
+    { top: '18%',  left: '86%',  size: 170, delay: 1.5, duration: 11 },
+    { top: '28%',  left: '-6%',  size: 160, delay: 4,   duration: 8  },
+    { top: '36%',  left: '82%',  size: 145, delay: 0.5, duration: 9  },
+    { top: '44%',  left: '-3%',  size: 175, delay: 2.5, duration: 7  },
+    { top: '52%',  left: '85%',  size: 155, delay: 3.5, duration: 10 },
+    { top: '61%',  left: '-7%',  size: 150, delay: 1,   duration: 8  },
+    { top: '67%',  left: '83%',  size: 170, delay: 2,   duration: 9  },
+    { top: '75%',  left: '-4%',  size: 165, delay: 0,   duration: 10 },
+    { top: '80%',  left: '87%',  size: 145, delay: 3,   duration: 7  },
+    { top: '89%',  left: '-2%',  size: 155, delay: 1.5, duration: 9  },
+    { top: '93%',  left: '81%',  size: 160, delay: 2.5, duration: 8  },
+  ]
 
   return (
     <>
