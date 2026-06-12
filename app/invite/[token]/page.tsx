@@ -200,7 +200,7 @@ export default function GuestBook() {
             <p className="text-6xl mb-6">🎉</p>
             <h2 className="text-white text-2xl font-light mb-2">¡Gracias!</h2>
             <p className="text-green-300/70 text-sm text-center mb-8">
-              Tu mensaje fue guardado. Belaisa lo verá pronto.
+              Tu mensaje fue enviado!. Bela lo verá pronto.
             </p>
             <button
               onClick={handleReset}
@@ -218,7 +218,7 @@ export default function GuestBook() {
           >
             <p className="text-green-400/60 text-xs uppercase tracking-widest text-center mb-2">Pon tu mensaje de cumpleaños aquí</p>
             <h1 className="text-white text-3xl font-light text-center mb-8">
-              Déjale un mensaje a Belaisa
+              Déjale un mensaje a Bela!
             </h1>
 
             <div className="flex flex-col gap-4">
