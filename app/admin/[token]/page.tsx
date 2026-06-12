@@ -63,7 +63,7 @@ export default function AdminPage() {
                   <img
                     src={entry.imageUrl}
                     alt={entry.name}
-                    className="w-full h-48 object-cover"
+                    className="w-full object-contain"
                   />
                 )}
                 <div className="p-5">
