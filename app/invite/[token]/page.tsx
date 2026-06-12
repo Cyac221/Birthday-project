@@ -237,7 +237,7 @@ export default function GuestBook() {
 
               {preview ? (
                 <div className="relative rounded-xl overflow-hidden border border-white/20">
-                  <img src={preview} alt="preview" className="w-full h-48 object-cover" />
+                  <img src={preview} alt="preview" className="w-full object-contain" />
                   <button
                     onClick={removeImage}
                     className="absolute top-2 right-2 bg-black/60 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-black/80 transition text-sm"
