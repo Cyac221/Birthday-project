@@ -36,3 +36,13 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: String(error) }, { status: 500 })
   }
 }
+export async function GET() {
+  try {
+    const entries = await prisma.entry.findMany({
+      orderBy: { createdAt: 'desc' },
+    })
+    return NextResponse.json(entries)
+  } catch (error) {
+    return NextResponse.json({ error: String(error) }, { status: 500 })
+  }
+}
