@@ -20,26 +20,48 @@ export default function GuestBook() {
     )
   }
 
-  const handleSubmit = async () => {
-    if (!name || !message) return
-    setStatus('loading')
-
-    const formData = new FormData()
-    formData.append('name', name)
-    formData.append('message', message)
-    if (image) formData.append('image', image)
-
-    const res = await fetch('/api/entries', {
-      method: 'POST',
-      body: formData,
-    })
-
-    if (res.ok) {
-      setStatus('success')
-    } else {
-      setStatus('error')
+  const compressImage = (file: File): Promise<File> => {
+  return new Promise((resolve) => {
+    const canvas = document.createElement('canvas')
+    const img = new Image()
+    img.onload = () => {
+      const maxW = 1200
+      const ratio = Math.min(maxW / img.width, maxW / img.height, 1)
+      canvas.width = img.width * ratio
+      canvas.height = img.height * ratio
+      canvas.getContext('2d')!.drawImage(img, 0, 0, canvas.width, canvas.height)
+      canvas.toBlob(blob => {
+        resolve(new File([blob!], file.name, { type: 'image/jpeg' }))
+      }, 'image/jpeg', 0.7)
     }
+    img.src = URL.createObjectURL(file)
+  })
+}
+
+const handleSubmit = async () => {
+  if (!name || !message) return
+  setStatus('loading')
+
+  const formData = new FormData()
+  formData.append('name', name)
+  formData.append('message', message)
+
+  if (image) {
+    const compressed = await compressImage(image)
+    formData.append('image', compressed)
   }
+
+  const res = await fetch('/api/entries', {
+    method: 'POST',
+    body: formData,
+  })
+
+  if (res.ok) {
+    setStatus('success')
+  } else {
+    setStatus('error')
+  }
+}
 
   if (status === 'success') {
     return (
