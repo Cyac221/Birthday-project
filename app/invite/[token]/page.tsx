@@ -216,7 +216,7 @@ export default function GuestBook() {
             animate={{ opacity: 1, y: 0 }}
             className="w-full max-w-md relative z-10"
           >
-            <p className="text-green-400/60 text-xs uppercase tracking-widest text-center mb-2">Guest Book</p>
+            <p className="text-green-400/60 text-xs uppercase tracking-widest text-center mb-2">Pon tu mensaje de cumpleaños aquí</p>
             <h1 className="text-white text-3xl font-light text-center mb-8">
               Déjale un mensaje a Belaisa
             </h1>
@@ -258,7 +258,7 @@ export default function GuestBook() {
                     id="photo"
                   />
                   <label htmlFor="photo" className="text-green-300/70 text-sm cursor-pointer">
-                    Subir una foto (opcional)
+                    Sube aquí tu foto con Bela (opcional)
                   </label>
                 </div>
               )}

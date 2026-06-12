@@ -40,8 +40,8 @@ export default function AdminPage() {
   return (
     <main className="min-h-screen px-6 py-16" style={{ background: 'linear-gradient(135deg, #001a14 0%, #002a22 40%, #004a3f 70%, #003830 100%)' }}>
       <div className="max-w-4xl mx-auto">
-        <p className="text-green-400/60 text-xs uppercase tracking-widest mb-2">Admin</p>
-        <h1 className="text-white text-3xl font-light mb-2">Mensajes para Belaisa</h1>
+        <p className="text-green-400/60 text-xs uppercase tracking-widest mb-2">El cumple de Bela</p>
+        <h1 className="text-white text-3xl font-light mb-2">Feliz cumpleaños de parte de todas las personas que te quieren ❤️</h1>
         <p className="text-green-300/50 text-sm mb-10">{entries.length} mensaje{entries.length !== 1 ? 's' : ''} recibido{entries.length !== 1 ? 's' : ''}</p>
 
         {loading ? (
