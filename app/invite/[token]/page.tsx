@@ -96,16 +96,18 @@ function Popup({ onClose }: { onClose: () => void }) {
         >
           ✕
         </button>
-        <p className="text-green-400/60 text-xs uppercase tracking-widest mb-4">Hola! Gracias por estar aquí :)</p>
-        <h2 className="text-white text-2xl font-light mb-4">
-          Que estés aquí con nosotros celebrando la vida de Isa lo hace mas especial
-        </h2>
-        <p className="text-green-200/60 text-sm leading-relaxed italic mb-6">
-          Esta página es una sorpresa para ella — aquí puedes dejarle un mensaje de cumpleaños, una foto o el recuerdo que quieras. Ella lo verá después.
-        </p>
-        <p className="text-white/70 text-sm text-center mb-6">
-        🤫 ¡ES SECRETO! - Que no se de cuenta! 🤫
-        </p>
+       <h1 className="text-white text-3xl font-bold text-center mb-2">
+        ¡Hola! Gracias por estar aquí 🎉
+      </h1>
+      <h2 className="text-green-300/80 text-base font-light text-center mb-4">
+        ¡Que estés aquí con nosotros celebrando la vida de Bela lo hace más especial!
+      </h2>
+      <p className="text-green-200/60 text-sm leading-relaxed italic mb-6">
+        Esta página es una sorpresa para ella — aquí puedes dejarle un mensaje de cumpleaños, una foto o el recuerdo que quieras. Ella lo verá después.
+      </p>
+      <p className="text-white/70 text-sm text-center mb-6">
+        🤫 ¡ES SECRETO! - ¡Que no se de cuenta! 🤫
+      </p>
         <button
           onClick={onClose}
           className="w-full bg-green-400/20 border border-green-400/40 text-green-300 py-3 rounded-full text-sm hover:bg-green-400/30 transition-all"
