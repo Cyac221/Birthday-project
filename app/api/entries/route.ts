@@ -9,25 +9,30 @@ cloudinary.config({
 })
 
 export async function POST(req: NextRequest) {
-  const formData = await req.formData()
-  const name = formData.get('name') as string
-  const message = formData.get('message') as string
-  const file = formData.get('image') as File | null
+  try {
+    const formData = await req.formData()
+    const name = formData.get('name') as string
+    const message = formData.get('message') as string
+    const file = formData.get('image') as File | null
 
-  let imageUrl: string | undefined
+    let imageUrl: string | undefined
 
-  if (file) {
-    const buffer = Buffer.from(await file.arrayBuffer())
-    const base64 = `data:${file.type};base64,${buffer.toString('base64')}`
-    const upload = await cloudinary.uploader.upload(base64, {
-      folder: 'birthday-alebasi',
+    if (file) {
+      const buffer = Buffer.from(await file.arrayBuffer())
+      const base64 = `data:${file.type};base64,${buffer.toString('base64')}`
+      const upload = await cloudinary.uploader.upload(base64, {
+        folder: 'birthday-alebasi',
+      })
+      imageUrl = upload.secure_url
+    }
+
+    const entry = await prisma.entry.create({
+      data: { name, message, imageUrl },
     })
-    imageUrl = upload.secure_url
+
+    return NextResponse.json(entry)
+  } catch (error) {
+    console.error('Error en API entries:', error)
+    return NextResponse.json({ error: String(error) }, { status: 500 })
   }
-
-  const entry = await prisma.entry.create({
-    data: { name, message, imageUrl },
-  })
-
-  return NextResponse.json(entry)
 }
