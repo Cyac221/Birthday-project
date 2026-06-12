@@ -101,7 +101,7 @@ function Popup({ onClose }: { onClose: () => void }) {
           Que estés aquí con nosotros celebrando la vida de Isa lo hace mas especial
         </h2>
         <p className="text-green-200/60 text-sm leading-relaxed italic mb-6">
-          Esta página es una sorpresa para ella — aquí puedes dejarle un mensaje de cumpleaños, una foto o el recuerdo que quieras. Ella lo verá después de la fiesta.
+          Esta página es una sorpresa para ella — aquí puedes dejarle un mensaje de cumpleaños, una foto o el recuerdo que quieras. Ella lo verá después.
         </p>
         <p className="text-white/70 text-sm text-center mb-6">
         🤫 ¡ES SECRETO! - Que no se de cuenta! 🤫
