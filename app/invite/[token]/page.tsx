@@ -96,12 +96,15 @@ function Popup({ onClose }: { onClose: () => void }) {
         >
           ✕
         </button>
-        <p className="text-green-400/60 text-xs uppercase tracking-widest mb-4">Bienvenido</p>
+        <p className="text-green-400/60 text-xs uppercase tracking-widest mb-4">Hola! Gracias por estar aquí :)</p>
         <h2 className="text-white text-2xl font-light mb-4">
-          Un momento especial
+          Que estés aquí con nosotros celebrando la vida de Isa lo hace mas especial
         </h2>
         <p className="text-green-200/60 text-sm leading-relaxed italic mb-6">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+          Esta página es una sorpresa para ella — aquí puedes dejarle un mensaje de cumpleaños, una foto o el recuerdo que quieras. Ella lo verá después de la fiesta.
+        </p>
+        <p className="text-white/70 text-sm text-center mb-6">
+        🤫 ¡ES SECRETO! - Que no se de cuenta! 🤫
         </p>
         <button
           onClick={onClose}
