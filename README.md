@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎂 Birthday Project
+
+An interactive birthday experience built as a full-stack web application — combining a public invitation page, a private admin dashboard, and a persistence layer for user-generated content.
+
+**🔗 Live demo:** [birthday-project-ashy-three.vercel.app](https://birthday-project-ashy-three.vercel.app)
+
+---
+
+## Overview
+
+This project explores building a small but complete full-stack product: a public-facing animated interface, an authenticated admin area, and a media-handling pipeline, all backed by a relational database.
+
+## Features
+
+- **Animated public page** — invitation UI built with custom transitions and micro-interactions.
+- **User-generated content module** — a lightweight interaction layer where visitors can contribute text and images, persisted to the database.
+- **Media pipeline** — image uploads processed and optimized through a third-party CDN.
+- **Admin dashboard** — protected view for managing event content and submissions.
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | [Next.js 16](https://nextjs.org) (App Router) |
+| Language | [TypeScript](https://www.typescriptlang.org) |
+| ORM | [Prisma 5](https://www.prisma.io) |
+| Database | [Supabase](https://supabase.com) (PostgreSQL) |
+| Media storage | [Cloudinary](https://cloudinary.com) |
+| Styling | [Tailwind CSS](https://tailwindcss.com) |
+| Deployment | [Vercel](https://vercel.com) |
+
+## Architecture Notes
+
+- **App Router** structure separates public routes from the admin namespace.
+- **Prisma** manages schema migrations and typed database access against Supabase's Postgres instance.
+- **Cloudinary** handles image upload, transformation, and delivery, decoupling media storage from the application server.
+- Environment-based configuration separates public and admin-only credentials.
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies and run the development server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project requires a Supabase connection string (for Prisma) and Cloudinary API credentials. Create a `.env` file based on the variables referenced in `prisma.config.ts` and the Cloudinary SDK setup.
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+app/        → routes (public + admin)
+lib/        → shared utilities and service clients
+prisma/     → schema and migrations
+public/     → static assets
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built as a full-stack exercise combining a modern React framework, a typed ORM, and a managed database/CDN stack.
