@@ -84,8 +84,12 @@ export default function DinamicasPage() {
                 )}
               </AnimatePresence>
               {!current && !loading && (
-                <p className="text-green-300/50 text-sm">¿Estas preparado?</p>
-              )}
+                <div className="text-center px-4">
+                    <p className="text-green-300/70 text-sm font-bold mb-1">¿Estás listo?</p>
+                    <p className="text-green-300/50 text-sm">Gira la ruleta de preguntas y acepta el reto.</p>
+                    <p className="text-green-300/50 text-sm">¡Ojo!👀 Solo tienes un giro, así que no intentes negociar con la suerte.</p>
+                </div>
+                )}
             </div>
           )}
         </div>
@@ -95,7 +99,7 @@ export default function DinamicasPage() {
           disabled={spinning || loading}
           className="mt-8 px-8 py-3 rounded-full bg-green-400 text-black font-medium disabled:opacity-40"
         >
-          {loading ? 'Cargando...' : spinning ? 'Girando...' : 'Gira la ruleta'}
+          {loading ? 'Cargando...' : spinning ? 'Girando...' : '¡Girar!'}
         </button>
       </div>
     </main>
