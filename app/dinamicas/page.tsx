@@ -55,7 +55,7 @@ export default function DinamicasPage() {
           className="w-48 sm:w-64 mb-6"
         />
 
-        <h1 className="text-white text-2xl font-light mb-10">Preguntas aleatorias con Bela</h1>
+        <h1 className="text-white text-2xl font-light mb-10">Preguntas aleatorias</h1>
 
         <div className="relative w-full max-w-md h-28 overflow-hidden rounded-2xl border border-white/10 bg-black/20">
           {spinning ? (
@@ -84,7 +84,7 @@ export default function DinamicasPage() {
                 )}
               </AnimatePresence>
               {!current && !loading && (
-                <p className="text-green-300/50 text-sm">Presiona girar</p>
+                <p className="text-green-300/50 text-sm">¿Estas preparado?</p>
               )}
             </div>
           )}
@@ -95,7 +95,7 @@ export default function DinamicasPage() {
           disabled={spinning || loading}
           className="mt-8 px-8 py-3 rounded-full bg-green-400 text-black font-medium disabled:opacity-40"
         >
-          {loading ? 'Cargando...' : spinning ? 'Girando...' : 'Girar 🎲'}
+          {loading ? 'Cargando...' : spinning ? 'Girando...' : 'Gira la ruleta'}
         </button>
       </div>
     </main>

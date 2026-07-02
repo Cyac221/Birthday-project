@@ -284,7 +284,7 @@ export default function Home() {
                     </a>
                      <Link href="/dinamicas"
                     className="inline-flex items-center justify-center bg-green-400 text-black font-medium px-7 py-3 rounded-full text-sm hover:bg-green-300 transition-all duration-300">
-                    🎡
+                    Preguntas aletorias con Bela
                   </Link>
                 </div>
                   <p className="text-green-200/60 text-sm leading-relaxed italic font-light max-w-sm mx-auto mt-8 text-center">
