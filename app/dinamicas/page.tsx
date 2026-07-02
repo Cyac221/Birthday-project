@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { getNextQuestion, type Question } from '@/lib/questionQueue'
-import FloatingPhotos from '@/components/FloatingPhotos'
 
 export default function DinamicasPage() {
   const [allQuestions, setAllQuestions] = useState<Question[]>([])
@@ -49,7 +48,6 @@ return (
       className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden"
       style={{ background: 'linear-gradient(135deg, #001a14 0%, #002a22 40%, #004a3f 70%, #003830 100%)' }}
     >
-      <FloatingPhotos />
 
       <div className="relative z-10 flex flex-col items-center">
         <h1 className="text-white text-2xl font-light mb-10">Preguntas aleatorias 🎡</h1>
