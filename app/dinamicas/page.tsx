@@ -50,7 +50,7 @@ return (
     >
 
       <div className="relative z-10 flex flex-col items-center">
-        <h1 className="text-white text-2xl font-light mb-10">Preguntas aleatorias 🎡</h1>
+        <h1 className="text-white text-2xl font-light mb-10">Preguntas aleatorias con Bela 🎡</h1>
 
         <div className="relative w-full max-w-md h-28 overflow-hidden rounded-2xl border border-white/10 bg-black/20">
           {spinning ? (
