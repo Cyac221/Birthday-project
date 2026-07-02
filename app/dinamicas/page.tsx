@@ -43,14 +43,19 @@ export default function DinamicasPage() {
     }, 2200)
   }
 
-return (
+  return (
     <main
       className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden"
       style={{ background: 'linear-gradient(135deg, #001a14 0%, #002a22 40%, #004a3f 70%, #003830 100%)' }}
     >
-
       <div className="relative z-10 flex flex-col items-center">
-        <h1 className="text-white text-2xl font-light mb-10">Preguntas aleatorias con Bela 🎡</h1>
+        <img
+          src="/images/belaisa-name.png"
+          alt="Bela's Birthday"
+          className="w-48 sm:w-64 mb-6"
+        />
+
+        <h1 className="text-white text-2xl font-light mb-10">Preguntas aleatorias con Bela</h1>
 
         <div className="relative w-full max-w-md h-28 overflow-hidden rounded-2xl border border-white/10 bg-black/20">
           {spinning ? (
