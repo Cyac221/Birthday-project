@@ -86,7 +86,7 @@ export default function DinamicasPage() {
               {!current && !loading && (
                 <div className="text-center px-4">
                     <p className="text-green-300/70 text-sm font-bold mb-1">¿Estás listo?</p>
-                    <p className="text-green-300/50 text-sm">Gira la ruleta de preguntas y acepta el reto.</p>
+                    <p className="text-green-300/50 text-sm">Gira la ruleta y acepta el reto.</p>
                     <p className="text-green-300/50 text-sm">¡Ojo!👀 Solo tienes un giro, así que no intentes negociar con la suerte.</p>
                 </div>
                 )}
