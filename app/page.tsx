@@ -282,7 +282,7 @@ export default function Home() {
                       className="inline-flex items-center justify-center bg-green-400/10 border border-green-400/30 text-green-300/70 px-7 py-3 rounded-full text-sm hover:bg-green-400/20 hover:border-green-400/50 transition-all duration-300">
                       Agregar al calendario
                     </a>
-                     <Link href="/notfound"
+                     <Link href="/dinamicas"
                     className="inline-flex items-center justify-center bg-green-400 text-black font-medium px-7 py-3 rounded-full text-sm hover:bg-green-300 transition-all duration-300">
                     Preguntas aletorias con Bela
                   </Link>
